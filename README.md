@@ -15,7 +15,7 @@ This is a basic Ethereum smart contract written in Solidity, representing a simp
 `onlyOwner` modifier
 : A modifier that restricts access to functions only to the contract owner.
 
-`setValue(uint256 _value)`
+`setValue(uint256 _stock)`
 : Sets the produc stock level, but only if the stock level is positive. Can only be called by the contract owner.
 Parameters:
 `_stock`: The new stock level to be set.
