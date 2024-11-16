@@ -10,27 +10,27 @@ This is a basic Ethereum smart contract written in Solidity. It demonstrates the
 **Contract Functions**
 
 `constructor`
-Description: Sets the initial owner of the contract to the address that deploys the contract.
+: Sets the initial owner of the contract to the address that deploys the contract.
 
 `onlyOwner` modifier
-Description: A modifier that restricts access to functions only to the contract owner.
+: A modifier that restricts access to functions only to the contract owner.
 
 `setValue(uint256 _value)`
-Description: Sets a new value to the contract, but only if the value is positive. Can only be called by the contract owner.
+: Sets a new value to the contract, but only if the value is positive. Can only be called by the contract owner.
 Parameters:
 `_value`: The new value to be set.
 Error Handling: Requires _value > 0.
 
 `checkInvariant()`
-Description: A function to check the contract invariant by asserting that the current value is less than 1 million. If the assertion fails, the transaction is reverted.
+: A function to check the contract invariant by asserting that the current value is less than 1 million. If the assertion fails, the transaction is reverted.
 
 `revertExample(uint256 _value)`
-Description: Demonstrates the use of revert. If the input value is equal to 42, the transaction is reverted with an error message.
+: Demonstrates the use of revert. If the input value is equal to 42, the transaction is reverted with an error message.
 Parameters:
-_value: The input value to be checked.
+`_value`: The input value to be checked.
 
 `transferOwnership(address newOwner)`
-Description: Allows the current owner to transfer ownership to a new address.
+: Allows the current owner to transfer ownership to a new address.
 Parameters:
 `newOwner`: The address to which ownership is being transferred.
 Error Handling: Requires newOwner not to be the zero address.
