@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.17;
 
-contract SmartContract {
+contract SarisariStore {
     address public owner;
-    uint256 public value;
+    uint256 public productStock;
 
     constructor() {
         owner = msg.sender; // Set the deployer as the owner
@@ -11,34 +11,32 @@ contract SmartContract {
 
     // Modifier to restrict access to the owner
     modifier onlyOwner() {
-        require(msg.sender == owner, "You are not the owner");
+        require(msg.sender == owner, "Access restricted to the owner only!");
         _;
     }
 
-    // Function to set a new value with a require statement
-    function setValue(uint256 _value) public onlyOwner {
+    function setStock(uint256 _stock) public onlyOwner {
         // Require the value to be positive
-        require(_value > 0, "Value must be greater than zero");
-        value = _value;
+        require(_value > 0, "Stock must be greater than zero");
+        productStock = _stock;
     }
 
-    // Function to test the assert statement
-    function checkInvariant() public view {
+    function checkStockInvariant() public view {
         // Assert that the value is always less than 1 million
-        assert(value < 1_000_000);
+        assert(productStock < 1_000_000);
     }
 
-    // Function to demonstrate revert
-    function revertExample(uint256 _value) public pure {
-        // Revert if the value is equal to 42
-        if (_value == 42) {
-            revert("The value 42 is not allowed");
+    function validateProductID(uint256 _prodID) public pure {
+        if (_prodID == 150) {
+            revert("Product 150 is restricted and don't sell it!");
         }
     }
 
-    // Function to transfer ownership
     function transferOwnership(address newOwner) public onlyOwner {
         require(newOwner != address(0), "New owner cannot be the zero address");
         owner = newOwner;
+    }
+    function getStock() public view returns (uint256) {
+        return productStock;
     }
 }
